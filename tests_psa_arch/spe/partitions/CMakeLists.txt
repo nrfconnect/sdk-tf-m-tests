@@ -53,7 +53,9 @@ set(TARGET tgt_ff_tfm_${PSA_API_TEST_TARGET})
 set(SUITE    ${TEST_PSA_API})
 set(PLATFORM_PSA_ISOLATION_LEVEL ${TFM_ISOLATION_LEVEL})
 
-list(APPEND PSA_INCLUDE_PATHS ${CMAKE_SOURCE_DIR}/interface/include)
+if(NOT PSA_CRYPTO_EXTERNAL_CORE)
+    list(APPEND PSA_INCLUDE_PATHS ${CMAKE_SOURCE_DIR}/interface/include)
+endif()
 list(APPEND PSA_INCLUDE_PATHS ${CMAKE_BINARY_DIR}/generated/interface/include)
 list(APPEND PSA_INCLUDE_PATHS ${CMAKE_BINARY_DIR}/generated/api-tests/platform/manifests)
 
